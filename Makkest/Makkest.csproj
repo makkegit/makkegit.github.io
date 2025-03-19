@@ -16,9 +16,4 @@
       <AdditionalFiles Include="Layout\ContactForm.razor" />
       <AdditionalFiles Include="Layout\MainLayout.razor" />
     </ItemGroup>
-
-    <ItemGroup>
-      <_ContentIncludedByDefault Remove="wwwroot\css\app.css" />
-    </ItemGroup>
-
 </Project>
