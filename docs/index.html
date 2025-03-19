@@ -12,9 +12,8 @@
 </head>
 <body>
 <div id="app">
-    <div class="loading-progress">
-        <!-- Optional loading spinner -->
-        <div class="spinner"></div>
+    <div class="loading-screen">
+        <div class="loading-text">Loading...</div>
     </div>
 </div>
 
@@ -23,7 +22,23 @@
     <a href="" class="reload">Reload</a>
     <a class="dismiss">🗙</a>
 </div>
+<style>
+    .loading-screen {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        background: #432E54;
+        font-family: 'Roboto', sans-serif;
+    }
 
+    .loading-text {
+        margin-top: 16px;
+        color: #ffffff;
+        font-size: 1rem;
+    }
+</style>
 <script src="_framework/blazor.webassembly.js"></script>
 <script src="_content/MudBlazor/MudBlazor.min.js"></script>
 </body>
