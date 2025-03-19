@@ -1,0 +1,321 @@
+﻿@page "/"
+@using Makkest.Client.Layout
+
+<PageTitle>Makkest</PageTitle>
+
+<MudContainer Fixed="true">
+    <!-- Hero Section -->
+    <MudGrid Justify="Justify.Center">
+        <!-- Text Content -->
+        <MudItem xs="12" sm="6" md="6" lg="4" xl="2">
+            <MudCard Elevation="20">
+                <MudCardMedia Height="400" Title="Me" Image="meika.jpg"></MudCardMedia>
+                <MudCardContent>
+                    <MudText Align="Align.Center" Typo="Typo.h3"><b>Hi, I'm Markus</b></MudText>
+                    <MudDivider Class="my-2"></MudDivider>
+                    <MudText Align="Align.Center" Typo="Typo.subtitle1">Your friendly neighbourhood
+                        <b>freelance developer</b>
+                    </MudText>
+                    <MudDivider Class="my-5" DividerType="DividerType.Middle"></MudDivider>
+                    <MudText Align="Align.Center" Typo="Typo.subtitle2">📍 Espoo, Finland</MudText>
+                </MudCardContent>
+                <MudCardActions Style="justify-content: space-evenly">
+                    <MudIconButton Icon="@Icons.Material.TwoTone.Email" Href="mailto:markus@makke.st"></MudIconButton>
+                    <MudIconButton Icon="@Icons.Custom.Brands.GitHub" Href="www.github.com/makkegit"></MudIconButton>
+                    <MudIconButton Icon="@Icons.Custom.Brands.LinkedIn"
+                                   Href="www.linkedin.com/in/makkein"></MudIconButton>
+                </MudCardActions>
+            </MudCard>
+        </MudItem>
+        <MudItem xs="12" sm="6" md="6" lg="4">
+            <MudGrid>
+                <MudItem xs="12">
+                    <MudCard Elevation="20">
+                        <MudCardHeader Style="justify-content: center">
+                            <MudText Typo="Typo.h5"><b>My professional stack</b></MudText>
+                        </MudCardHeader>
+                        <MudDivider DividerType="DividerType.Middle"></MudDivider>
+                        <MudCardContent>
+                            <MudChip T="string" Size="Size.Large" Color="Color.Info"
+                                     Icon="@Icons.Custom.Brands.MicrosoftAzure">Azure
+                            </MudChip>
+                            <MudChip T="string" Icon="@Icons.Material.TwoTone.Code" Size="Size.Large"
+                                     Color="Color.Primary">.NET / C#
+                            </MudChip>
+                            <MudChip T="string" Icon="@Icons.Material.TwoTone.Javascript" Size="Size.Large"
+                                     Color="Color.Success">Javascript (VueJS)
+                            </MudChip>
+                            <MudChip T="string" Icon="fas fa-database" Size="Size.Large"
+                                     Color="Color.Error">MSSQL/PSQL
+                            </MudChip>
+                            <MudChip T="string" Size="Size.Large" Color="Color.Transparent"
+                                     Icon="@Icons.Custom.Brands.MudBlazor">Blazor
+                            </MudChip>
+                            <MudChip T="string" Size="Size.Large" Color="Color.Dark"
+                                     Icon="@Icons.Custom.Brands.MicrosoftVisualStudio">VisualStudio
+                            </MudChip>
+                            <MudChip T="string" Size="Size.Large" Color="Color.Warning"
+                                     Icon="@Icons.Material.TwoTone.Construction">Rider
+                            </MudChip>
+                        </MudCardContent>
+                    </MudCard>
+                </MudItem>
+                <MudFlexBreak></MudFlexBreak>
+                <MudItem xs="12">
+                    <MudGrid Spacing="4">
+                        <MudItem xs="6">
+                            <MudCard Elevation="25">
+                                <MudCardContent>
+                                    <MudText Typo="Typo.h2" Align="Align.Center" Class="mt-2"><b>@YearsOfExperience</b>
+                                    </MudText>
+                                    <MudText Typo="Typo.subtitle2" Align="Align.Center" Class="mt-2">
+                                        Years of professional experience
+                                    </MudText>
+                                </MudCardContent>
+                            </MudCard>
+                        </MudItem>
+                        <MudItem xs="6">
+                            <MudCard Elevation="25">
+                                <MudCardContent>
+                                    <MudText Typo="Typo.h2" Align="Align.Center" Class="mt-2"><b>.NET</b></MudText>
+                                    <MudText Typo="Typo.subtitle2" Align="Align.Center" Class="mt-2">
+                                        developer
+                                    </MudText>
+                                </MudCardContent>
+
+                            </MudCard>
+                        </MudItem>
+                        <MudItem xs="6">
+                            <MudPaper Elevation="20" Height="100%" Class="pa-4 d-flex align-center">
+                                <MudGrid Justify="Justify.Center" Spacing="4"
+                                         Style="width: 100%;">
+                                    <!-- First Row -->
+                                    <MudItem xs="6" md="3" Class="d-flex justify-center align-center">
+                                        <MudIcon Size="Size.Large"
+                                                 Icon="@Icons.Material.Outlined.ShoppingCart"/>
+                                    </MudItem>
+                                    <MudItem xs="6" md="3" Class="d-flex justify-center align-center">
+                                        <MudIcon Size="Size.Large"
+                                                 Icon="@Icons.Material.Outlined.LocalTaxi"/>
+                                    </MudItem>
+                                    <!-- Second Row (visible on md and below) -->
+                                    <MudItem xs="6" md="3" Class="d-flex justify-center align-center">
+                                        <MudIcon Size="Size.Large"
+                                                 Icon="@Icons.Material.Outlined.CreditCard"/>
+                                    </MudItem>
+                                    <MudItem xs="6" md="3" Class="d-flex justify-center align-center">
+                                        <MudIcon Size="Size.Large"
+                                                 Icon="@Icons.Material.Outlined.PhoneIphone"/>
+                                    </MudItem>
+                                    <MudItem xs="12" Class="text-center mt-4">
+                                        <MudText Typo="Typo.subtitle2" Align="Align.Center">
+                                            <b>Industry knowledge</b>
+                                        </MudText>
+                                    </MudItem>
+                                </MudGrid>
+                            </MudPaper>
+                        </MudItem>
+                        <MudItem xs="6">
+                            <MudPaper Elevation="20" Height="100%" Class="pa-4 d-flex align-center">
+                                <MudGrid Justify="Justify.Center" Spacing="4"
+                                         Style="width: 100%;">
+                                    <!-- Icons Grid -->
+                                    <MudItem xs="6" md="3" Class="d-flex justify-center align-center">
+                                        <MudIcon Size="Size.Large"
+                                                 Icon="@Icons.Material.Outlined.SportsGolf"/>
+                                    </MudItem>
+
+                                    <MudItem xs="6" md="3" Class="d-flex justify-center align-center">
+                                        <MudIcon Size="Size.Large"
+                                                 Icon="@Icons.Material.Outlined.VideogameAsset"/>
+                                    </MudItem>
+
+                                    <MudItem xs="6" md="3" Class="d-flex justify-center align-center">
+                                        <MudIcon Size="Size.Large"
+                                                 Icon="@Icons.Material.Outlined.FamilyRestroom"/>
+                                    </MudItem>
+
+                                    <MudItem xs="6" md="3" Class="d-flex justify-center align-center">
+                                        <MudIcon Size="Size.Large"
+                                                 Icon="@Icons.Material.Outlined.Computer"/>
+                                    </MudItem>
+
+                                    <!-- Title -->
+                                    <MudItem xs="12" Class="text-center mt-4">
+                                        <MudText Typo="Typo.subtitle2" Align="Align.Center">
+                                            <b>Hobbies</b>
+                                        </MudText>
+                                    </MudItem>
+                                </MudGrid>
+                            </MudPaper>
+                        </MudItem>
+                    </MudGrid>
+                </MudItem>
+            </MudGrid>
+        </MudItem>
+        <MudFlexBreak></MudFlexBreak>
+        <MudItem xs="12" sm="12" md="12" lg="6">
+            <MudText Typo="Typo.h3" Align="Align.Center">Work history</MudText>
+            <MudTimeline TimelinePosition="TimelinePosition.Start">
+                <MudTimelineItem Size="Size.Large">
+                    <ItemDot>
+                        <MudIcon Size="Size.Large" Icon="@Icons.Material.TwoTone.Flag"
+                                 Color="Color.Dark"></MudIcon>
+                    </ItemDot>
+                    <ItemContent>
+                        <MudCard Elevation="25">
+                            <MudCardContent>
+                                <MudText Typo="Typo.h5">Senior Fullstack Developer</MudText>
+                                <MudText Typo="Typo.subtitle1">Router Group Oy</MudText>
+                                <MudText Typo="Typo.subtitle2">5/2022 - 6/2025</MudText>
+                                <MudText Typo="Typo.body1">
+                                    Developed and maintained a cloud-native solution in taxi industry.
+                                    Lead developer in a customer project. Mentoring new developers.
+                                </MudText>
+                            </MudCardContent>
+                            <MudCardActions>
+                                <MudGrid xs="6" Spacing="1">
+                                    <MudItem>
+                                        <MudChip T="string" Size="Size.Small" Color="Color.Info"
+                                                 Icon="@Icons.Custom.Brands.MicrosoftAzure">Azure
+                                        </MudChip>
+                                    </MudItem>
+                                    <MudItem>
+                                        <MudChip T="string" Icon="@Icons.Material.TwoTone.Code" Size="Size.Small"
+                                                 Color="Color.Primary">.NET / C#
+                                        </MudChip>
+                                    </MudItem>
+                                    <MudItem>
+                                        <MudChip T="string" Icon="@Icons.Material.TwoTone.Javascript" Size="Size.Small"
+                                                 Color="Color.Success">Javascript
+                                        </MudChip>
+                                    </MudItem>
+                                    <MudItem>
+                                        <MudChip T="string" Icon="fas fa-database" Size="Size.Small"
+                                                 Color="Color.Error">MSSQL/PSQL
+                                        </MudChip>
+                                    </MudItem>
+                                    <MudItem>
+                                        <MudChip T="string" Size="Size.Small" Color="Color.Transparent"
+                                                 Icon="@Icons.Custom.Brands.MudBlazor">Blazor
+                                        </MudChip>
+                                    </MudItem>
+                                    <MudItem>
+                                        <MudChip T="string" Size="Size.Small" Color="Color.Info"
+                                                 Icon="fab fa-docker"> Docker
+                                        </MudChip>
+                                    </MudItem>
+                                    <MudItem>
+                                        <MudChip T="string" Size="Size.Small" Color="Color.Dark"
+                                                 Icon="@Icons.Custom.Brands.MicrosoftVisualStudio">VisualStudio
+                                        </MudChip>
+                                    </MudItem>
+                                </MudGrid>
+                            </MudCardActions>
+                        </MudCard>
+                    </ItemContent>
+                </MudTimelineItem>
+                <MudTimelineItem Size="Size.Small" TimelineAlign="TimelineAlign.End"
+                                 DotStyle="background: grey">
+                    <MudCard Outlined="false" Style="background: rgba(66, 59, 108, 0.4)">
+                        <MudCardContent>
+                            <MudText Typo="Typo.h5">Application Developer</MudText>
+                            <MudText Typo="Typo.subtitle1">Fujitsu</MudText>
+                            <MudText Typo="Typo.subtitle2">8/2019 - 4/2022</MudText>
+                            <MudText Typo="Typo.body1">
+                                Retail application development for market place systems.
+                                POS system development that is used in
+                                most common retail stores in Finland.
+                                Various small projects.
+                            </MudText>
+                        </MudCardContent>
+                        <MudCardActions>
+                            <MudGrid xs="6" Spacing="1">
+                                <MudItem>
+                                    <MudChip T="string" Icon="@Icons.Material.TwoTone.Code" Size="Size.Small"
+                                             Color="Color.Primary">.NET Framework / C# / WPF
+                                    </MudChip>
+                                </MudItem>
+                                <MudItem>
+                                    <MudChip T="string" Icon="fas fa-database" Size="Size.Small"
+                                             Color="Color.Error">MSSQL
+                                    </MudChip>
+                                </MudItem>
+                                <MudItem>
+                                    <MudChip T="string" Size="Size.Small" Color="Color.Dark"
+                                             Icon="@Icons.Custom.Brands.MicrosoftVisualStudio">VisualStudio
+                                    </MudChip>
+                                </MudItem>
+                            </MudGrid>
+                        </MudCardActions>
+                    </MudCard>
+                </MudTimelineItem>
+            </MudTimeline>
+            <MudCard Elevation="6">
+                <MudCardHeader>
+                    <MudText Typo="Typo.h4"><b>About me</b></MudText>
+                </MudCardHeader>
+                <MudCardContent>
+                    <MudText Typo="Typo.subtitle2">Code whisperer by day, gamer by night and dad 24/7</MudText>
+                    <MudDivider Class="my-3"></MudDivider>
+                    <MudText Typo="Typo.body2">
+                        I believe that truly successful projects don’t just come from writing good code—they come from
+                        <b>great communication, strong teamwork, and understanding the bigger picture.</b>
+                        Software development is more than just solving technical problems;
+                        it’s about creating solutions that drive real value for businesses and users alike.
+                    </MudText>
+                    <MudDivider Class="my-3"></MudDivider>
+                    <MudText Typo="Typo.body2">
+                        With <b>over @YearsOfExperience years of experience</b> in building enterprise-grade software,
+                        I have worked with companies ranging from small startups to large corporations.
+                        I've contributed to codebases of all sizes, from monolithic architectures to microservices,
+                        developing software that seamlessly integrates into real-world operations.
+                        My primary focus has always been on creating solutions that enhance both the developer and user
+                        experience.
+                    </MudText>
+                    <MudDivider Class="my-3"></MudDivider>
+                    <MudText Typo="Typo.body2">
+                        A well-designed system should be
+                        <b>easy to maintain, enjoyable to use, and most importantly,
+                            serve its business purpose effectively.</b> Beyond development,
+                        I take pride in helping others to succeed. Whether it’s mentoring junior developers,
+                        improving team workflows, or refining system architecture, I believe that collaboration and
+                        knowledge-sharing lead to the best outcomes. A great developer isn’t just someone who writes
+                        efficient code but someone who elevates the entire team.
+                    </MudText>
+                    <MudDivider Class="my-3"></MudDivider>
+                    <MudText Typo="Typo.body2">
+                        If you’re looking for someone who can bridge the gap between business needs and technical
+                        execution while fostering a strong, collaborative work environment, <b>let’s talk!</b>
+                    </MudText>
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+        <MudFlexBreak></MudFlexBreak>
+        <MudItem xs="12" lg="6">
+            <ContactForm/>
+        </MudItem>
+    </MudGrid>
+    <!-- About Section -->
+    @* <MudPaper Class="pa-4 pa-md-8 ma-2"> *@
+    @*     <MudText Typo="Typo.h4">About</MudText> *@
+    @* </MudPaper> *@
+
+    <!-- Contact Form Section -->
+</MudContainer>
+
+@code
+{
+    private static readonly TimeZoneInfo FinnishTime = TimeZoneInfo.FindSystemTimeZoneById("Europe/Helsinki");
+
+    private static readonly DateTimeOffset StartDate = new(2019, 7, 1, 1, 0, 0,
+        FinnishTime.BaseUtcOffset);
+
+    private int YearsOfExperience => CalculateExperience();
+
+    private int CalculateExperience()
+    {
+        DateTimeOffset now = TimeZoneInfo.ConvertTimeFromUtc(DateTimeOffset.Now.DateTime, FinnishTime);
+        return (int)System.Math.Round((now - StartDate).Days / 365d, MidpointRounding.ToZero);
+    }
+}

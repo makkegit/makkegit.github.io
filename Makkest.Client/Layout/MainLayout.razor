@@ -1,0 +1,105 @@
+﻿@inherits LayoutComponentBase
+
+<MudThemeProvider Theme="@_theme" IsDarkMode="_isDarkMode"/>
+@* <MudPopoverProvider/> *@
+@* <MudDialogProvider/> *@
+<MudSnackbarProvider/>
+<MudLayout>
+    @* <MudAppBar Elevation="1" Color="Color.Dark"> *@
+    @*     <!-- Spacer to push items to the right --> *@
+    @*     <!-- Logo or Title --> *@
+    @*     $1$ <MudText Typo="Typo.h3" Class="ml-2">Makkest</MudText> #1# *@
+    @*      <MudSpacer/> *@
+    @*     <!-- Navigation Links (Visible on larger screens) --> *@
+    @*     $1$ <MudButton Class="mx-3" Variant="Variant.Text">About</MudButton> #1# *@
+    @*     $1$ <MudButton Class="mx-3" Variant="Variant.Text">Contact</MudButton> #1# *@
+    @*      *@
+    @*     <!-- Dark/Light Mode Toggle --> *@
+    @*     <MudIconButton Icon="@(DarkLightModeButtonIcon)" Color="Color.Inherit" OnClick="@DarkModeToggle"/> *@
+    @* </MudAppBar> *@
+
+    <!-- Main Content -->
+    <MudMainContent Class="mt-16 pa-4">
+        @Body
+    </MudMainContent>
+</MudLayout>
+
+<div id="blazor-error-ui" data-nosnippet>
+    An unhandled error has occurred.
+    <a href="." class="reload">Reload</a>
+    <span class="dismiss">🗙</span>
+</div>
+
+@code {
+    private bool _isDarkMode = true;
+    private MudTheme? _theme = null;
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+
+        _theme = new()
+        {
+            PaletteLight = _lightPalette,
+            PaletteDark = _darkPalette,
+            LayoutProperties = new LayoutProperties()
+        };
+    }
+
+    private void DarkModeToggle()
+    {
+        _isDarkMode = !_isDarkMode;
+    }
+
+    private readonly PaletteLight _lightPalette = new()
+    {
+        Primary = Colors.Pink.Default,
+        Secondary = Colors.Blue.Default,
+        Tertiary = Colors.Yellow.Accent3,
+        Background = Colors.Gray.Lighten5,
+        Surface = Colors.Gray.Lighten4,
+        AppbarBackground = Colors.Pink.Default,
+        DrawerBackground = Colors.Gray.Lighten5,
+        DrawerText = Colors.Shades.Black,
+        Success = Colors.Green.Accent3,
+        Info = Colors.Blue.Default,
+        Warning = Colors.Yellow.Accent3,
+        Error = Colors.Red.Accent4,
+        TextPrimary = Colors.Shades.Black,
+        TextSecondary = Colors.Gray.Darken1,
+        ActionDefault = Colors.Shades.Black,
+        ActionDisabled = Colors.Gray.Lighten1,
+        ActionDisabledBackground = Colors.Gray.Lighten2
+    };
+
+    // https://colorhunt.co/palette/432e544b4376ae445ae8bcb9
+    private readonly PaletteDark _darkPalette = new()
+    {
+        Primary = Colors.Pink.Default,
+        Secondary = Colors.Blue.Default,
+        Tertiary = "FFE162",
+        Background = "432E54",
+        Surface = "4B4376",
+        AppbarBackground = "AE445A",
+        DrawerBackground = Colors.Indigo.Darken4,
+        DrawerText = "FF6363",
+        Success = "91C483",
+        Info = Colors.Blue.Default,
+        Warning = "FFE162",
+        Error = Colors.Red.Accent4,
+        TextPrimary = "E8BCB9",
+        TextSecondary = Colors.Gray.Lighten1,
+        ActionDefault = "E8BCB9",
+        ActionDisabled = Colors.Gray.Darken1,
+        ActionDisabledBackground = Colors.Indigo.Darken4
+    };
+
+    public string DarkLightModeButtonIcon => _isDarkMode switch
+    {
+        true => Icons.Material.Rounded.AutoMode,
+        false => Icons.Material.Outlined.DarkMode,
+    };
+
+}
+
+

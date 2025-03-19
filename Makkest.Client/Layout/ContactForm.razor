@@ -1,0 +1,223 @@
+@using System.Globalization
+@using Makkest.Client.Services
+
+<MudText Typo="Typo.h3" Class="mb-4">Contact</MudText>
+<MudPaper Class="pa-4" Elevation="5">
+    <MudGrid Justify="Justify.FlexStart">
+        <MudItem xs="12">
+            <!-- Existing chat messages -->
+            <MudChat ChatPosition="ChatBubblePosition.End">
+                <MudAvatar>👤</MudAvatar>
+                <MudChatBubble>
+                    How do I reach you out?
+                </MudChatBubble>
+                <MudChatBubble>
+                    Email? Socials?
+                </MudChatBubble>
+            </MudChat>
+
+            <MudChat ChatPosition="ChatBubblePosition.Start" Class="pb-4">
+                <MudAvatar>
+                    <MudImage Src="meika.jpg" ObjectFit="ObjectFit.Cover"></MudImage>
+                </MudAvatar>
+                <MudChatBubble>
+                    <MudLink Href="mailto:markus@makke.st">markus@makke.st</MudLink>
+                    <MudIconButton OnClick='() => CopyToClipboard("markus@makke.st")'
+                                   Icon="@Icons.Material.Filled.ContentCopy"></MudIconButton>
+                </MudChatBubble>
+                <MudChatBubble a>
+                    <MudLink Underline="Underline.Always" Href="https://www.linkedin.com/in/makkein"
+                             UserAttributes="_linkAttr" 
+                             Target="_blank">
+                        DM me on LinkedIn
+                        <MudIcon Size="Size.Large" Icon="@Icons.Custom.Brands.LinkedIn"></MudIcon>
+                    </MudLink>
+                </MudChatBubble>
+                <MudChatBubble>
+                    Or
+                </MudChatBubble>
+                <MudChatBubble>
+                    Contact me by filling the form below 👇📄
+                </MudChatBubble>
+            </MudChat>
+
+            @if (FormSubmitted)
+            {
+                <MudChat ChatPosition="ChatBubblePosition.End" Class="pb-4">
+                    <MudAvatar>👤</MudAvatar>
+                    <MudChatHeader>@DateTime.Now.ToString("HH:mm", CultureInfo.InvariantCulture)</MudChatHeader>
+                    <MudChatBubble>@_model.Name: @_model.ContactInfo</MudChatBubble>
+                    <MudChatBubble>@_model.Message</MudChatBubble>
+                    <MudChatFooter>Sent</MudChatFooter>
+                </MudChat>
+                <!-- Typing Indicator -->
+                @if (IsTyping)
+                {
+                    <MudChat ChatPosition="ChatBubblePosition.Start" Class="pb-4">
+                        <MudAvatar>
+                            <MudImage Src="meika.jpg" ObjectFit="ObjectFit.Cover"></MudImage>
+                        </MudAvatar>
+                        <MudChatBubble>
+                            <MudIcon Size="Size.Small" Icon="@Icons.Material.Rounded.Circle"></MudIcon>
+                            <MudIcon Size="Size.Small" Icon="@Icons.Material.Rounded.Circle"></MudIcon>
+                            <MudIcon Size="Size.Small" Icon="@Icons.Material.Rounded.Circle"></MudIcon>
+                        </MudChatBubble>
+                    </MudChat>
+                }
+
+                <!-- Final Response -->
+                @if (!IsTyping)
+                {
+                    <MudChat ChatPosition="ChatBubblePosition.Start" Class="pb-4">
+                        <MudAvatar>
+                            <MudImage Src="meika.jpg" ObjectFit="ObjectFit.Cover"></MudImage>
+                        </MudAvatar>
+                        <MudChatHeader>@DateTime.Now.ToString("HH:mm", CultureInfo.InvariantCulture)</MudChatHeader>
+                        <MudChatBubble>
+                            Thanks I'll contact you ASAP! ⚡
+                        </MudChatBubble>
+                    </MudChat>
+                }
+            }
+        </MudItem>
+        <MudItem xs="12">
+            <MudForm Model="_model" @ref="_form">
+                <!-- Honeypot Field (Hidden), padding to -->
+                <MudTextField @bind-Value="_model.HoneyPot"
+                              Class="pt-4 pb-4"
+                              Variant="Variant.Text"
+                              InputType="InputType.Hidden"
+                              FullWidth="true"/>
+                <MudGrid>
+                    <MudItem xs="6">
+                        <MudTextField @bind-Value="_model.Name"
+                                      Label="Name"
+                                      Required="true"
+                                      Disabled="ReadOnly"
+                                      ShrinkLabel
+                                      Variant="Variant.Filled"
+                                      RequiredError="Who are you"
+                                      FullWidth="false"/>
+                    </MudItem>
+                    <MudItem xs="6">
+                        <MudTextField @bind-Value="_model.ContactInfo"
+                                      Label="Email/Phone"
+                                      Required="true"
+                                      Disabled="ReadOnly"
+                                      ShrinkLabel
+                                      Variant="Variant.Filled"
+                                      RequiredError="How do I contact you? :^)"
+                                      FullWidth="false"/>
+                    </MudItem>
+                    <MudItem xs="12">
+                        <MudTextField @bind-Value="_model.Message"
+                                      Label="Message"
+                                      Disabled="ReadOnly"
+                                      Required="true"
+                                      ShrinkLabel
+                                      Variant="Variant.Outlined"
+                                      AutoGrow
+                                      Lines="7"
+                                      RequiredError="Let's get in touch! Provide some contact details"
+                                      FullWidth="true"/>
+                    </MudItem>
+                    <MudItem xs="12">
+                        <MudButton Size="Size.Large"
+                                   Variant="Variant.Filled"
+                                   Disabled="ReadOnly"
+                                   Color="Color.Primary"
+                                   EndIcon="@Icons.Material.Filled.Send"
+                                   OnClick="@(async () => await SubmitForm().ConfigureAwait(false))"
+                                   Class="mt-4">
+                            Send
+                        </MudButton>
+                    </MudItem>
+                </MudGrid>
+            </MudForm>
+        </MudItem>
+    </MudGrid>
+</MudPaper>
+
+@code {
+    [Inject] ISnackbar? Snackbar { get; set; }
+    [Inject] IClipboardService? ClipboardService { get; set; }
+
+    MudForm? _form;
+    ContactModel _model = new ContactModel();
+    private bool FormSubmitted { get; set; }
+    private bool IsTyping { get; set; }
+    private bool ReadOnly => FormSubmitted;
+    private string SheetsUrl => 
+        "https://script.google.com/macros/s/AKfycbx6F3H1r1seDvoFI2DtpGfmUyAH_odsvlzmALAAZoRRPDwLz-bXvkwAa2Rfnfm6_IP3/exec";
+    private Dictionary<string, object?> _linkAttr = 
+        new Dictionary<string, object?>(){ {"rel", "noopener noreferrer"} }; 
+    public class ContactModel
+    {
+        public string Name { get; set; }
+        public string ContactInfo { get; set; }
+        public string Message { get; set; }
+        public string HoneyPot { get; set; }
+    }
+
+
+    private async Task SubmitForm()
+    {
+        await _form.Validate();
+
+        if (_form.IsValid && string.IsNullOrWhiteSpace(_model.HoneyPot))
+        {
+            FormSubmitted = true;
+            IsTyping = true;
+            await Task.Delay(1500);
+
+            try
+            {
+                var httpClient = new HttpClient();
+                var content = new FormUrlEncodedContent([
+                    new ("name", _model.Name),
+                    new ("contactinfo", _model.ContactInfo),
+                    new ("message", _model.Message),
+                    new ("honeypot", _model.HoneyPot)
+                ]);
+
+                var reponse = await httpClient.PostAsync(
+                    SheetsUrl,
+                    content);
+
+                if (reponse.IsSuccessStatusCode)
+                {
+                    IsTyping = false;
+                }
+                else
+                {
+                    Snackbar.Add("Unable to send a message :/", Severity.Error);
+                }
+            }
+            catch
+            {
+                Snackbar.Add("Unable to send a message :/", Severity.Error);
+            }
+        }
+        else
+        {
+            if (!string.IsNullOrWhiteSpace(_model.HoneyPot))
+            {
+                Snackbar.Add("bot,bot bot", Severity.Error);
+                FormSubmitted = true;
+            }
+            else
+            {
+                FormSubmitted = false;
+            }
+        }
+
+        StateHasChanged();
+    }
+
+    private void CopyToClipboard(string stringToCopy)
+    {
+        ClipboardService.WriteTextAsync(stringToCopy);
+        Snackbar.Add("Copied!", Severity.Success);
+    }
+
+}
