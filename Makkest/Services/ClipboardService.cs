@@ -1,6 +1,6 @@
 using Microsoft.JSInterop;
 
-namespace Makkest.Client.Services;
+namespace Makkest.Services;
 
 public class ClipboardService : IClipboardService
 {

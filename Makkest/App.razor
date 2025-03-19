@@ -1,7 +1,6 @@
-﻿@using Makkest.Client.Layout
-@using Microsoft.AspNetCore.Components.Routing
+﻿@using Makkest.Layout
 
-<Router AppAssembly="@typeof(Program).Assembly">
+<Router AppAssembly="@typeof(App).Assembly">
     <Found Context="routeData">
         <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
         <FocusOnNavigate RouteData="@routeData" Selector="h1" />

@@ -1,4 +1,4 @@
-namespace Makkest.Client.Services;
+namespace Makkest.Services;
 
 public interface IClipboardService
 {
