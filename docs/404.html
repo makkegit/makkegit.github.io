@@ -12,16 +12,10 @@
 </head>
 <body>
     <div id="app">
-        <div class="loading-screen">
-            <div class="mud-progress-circular">
-                <svg class="mud-progress-circular-svg" viewBox="22 22 44 44">
-                    <circle class="mud-progress-circular-circle" cx="44" cy="44" r="20" 
-                            fill="none" stroke-width="4"></circle>
-                </svg>
-            </div>
-            <div class="loading-text">Loading...</div>
-        </div>
+    <div class="loading-screen">
+        <div class="loading-text">Loading...</div>
     </div>
+</div>
 
 <div id="blazor-error-ui">
     An unhandled error has occurred.
@@ -35,16 +29,15 @@
         align-items: center;
         justify-content: center;
         height: 100vh;
-        background: #ffffff;
+        background: #432E54;
         font-family: 'Roboto', sans-serif;
     }
 
     .loading-text {
         margin-top: 16px;
-        color: var(--mud-palette-primary);
+        color: #ffffff;
         font-size: 1rem;
     }
-
 </style>
 <script src="_framework/blazor.webassembly.js"></script>
 <script src="_content/MudBlazor/MudBlazor.min.js"></script>
