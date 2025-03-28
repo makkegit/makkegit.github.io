@@ -9,7 +9,7 @@
         <!-- Text Content -->
         <MudItem xs="12" sm="6" md="6" lg="4" xl="2">
             <MudCard Elevation="20">
-                <MudCardMedia Height="400" Title="Me" Image="meika.jpg"></MudCardMedia>
+                <MudCardMedia UserAttributes="@AltAttrs["kuva"]" Height="400" Title="Me" Image="meika.jpg"></MudCardMedia>
                 <MudCardContent>
                     <MudText Align="Align.Center" Typo="Typo.h3"><b>Hi, I'm Markus</b></MudText>
                     <MudDivider Class="my-2"></MudDivider>
@@ -324,6 +324,11 @@
 
 @code
 {
+    private static readonly Dictionary<string, Dictionary<string, object?>> AltAttrs = 
+        new()
+    {
+        { "kuva", new (){{"alt", "handsome developer"} }}
+    };
     private static readonly TimeZoneInfo FinnishTime = TimeZoneInfo.FindSystemTimeZoneById("Europe/Helsinki");
 
     private static readonly DateTimeOffset StartDate = new(2019, 7, 1, 1, 0, 0,
